@@ -34,7 +34,7 @@ class Coin:
         if eventnum == 0:
             self.sideup = "Coin lands on the table upright"
         elif eventnum == 1:
-            self.sideup = "Coin drops on the ground and disappearsin a rabbit hole"
+            self.sideup = "Coin drops on the ground and disappearing a rabbit hole"
         else:
             self.sideup = "Coin defies gravity and gets lost on a wormhole in space"
 
@@ -42,9 +42,8 @@ class Coin:
     def toss_or_event(self):
         if random.randint(0,1) == 0:
             return True
-        
         else:
-            self.random_event()
+            return False
         
     
 #Main function definition

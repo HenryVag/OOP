@@ -1,6 +1,8 @@
 #File name: Exercise_1.py
 #Author: Henry Våg
 #Description: Exercise 1 of the OOP course
+#Note: Code has been commented out in a way that the phonebook exercise can be
+#      tested, the upcoming exercises will be in their separeate files
 
 import random
 """

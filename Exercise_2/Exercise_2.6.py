@@ -6,16 +6,13 @@ import datetime
 
 def list_years(dates: list):
 
-    years = []
-    years.append(date1.year)
-    years.append(date2.year)
-    years.append(date3.year)
+    new_list = [date.year for date in dates]
+    
+    return sorted(new_list)
 
-    years.sort()
-    return years
     
 
-
+    
 date1 = datetime.date(2019,2, 3)
 date2 = datetime.date(2006, 10, 10)
 date3 = datetime.date(1993, 5, 9)

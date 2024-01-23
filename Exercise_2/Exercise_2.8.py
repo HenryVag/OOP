@@ -2,27 +2,29 @@
 #Author: Henry Våg
 #Description: Exercise 2.8
 
+List = []
+
 class Checklist:
 
-    def __init__(self, header,entries):
-        self.header = str(header)
-        self.entries = list(entries)
+    def __init__(self, header: str, entries: List[str]):
+        self.header = header
+        self.entries = entries
 
 
 class Customer:
 
-    def __init__(self, id, balance, discount):
-        self.id = str(id)
-        self.balance = float(balance)
-        self.discount = int(discount)
+    def __init__(self, id: str, balance: float, discount: int):
+        self.id = id
+        self.balance = balance
+        self.discount = discount
 
 class Cable:
 
-    def __init__(self, model, length, max_speed, bidirectional):
-        self.model = str(model)
-        self.length = float(length)
-        self.max_speed = int(max_speed)
-        self.bidirectional = bool(bidirectional)
+    def __init__(self, model: str, length: float, max_speed: int, bidirectional: bool):
+        self.model = model
+        self.length = length
+        self.max_speed = max_speed
+        self.bidirectional = bidirectional
 
 
 

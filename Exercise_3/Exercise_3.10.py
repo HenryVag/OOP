@@ -36,8 +36,6 @@ class BankAccount:
    
 
 
-
-
 account = BankAccount("Randy Riches","12345-6789",1000)
 account.withdraw(100)
 print(account.balance)

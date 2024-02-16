@@ -32,7 +32,7 @@ class WeatherStation:
     def number_of_observations():
         return len(WeatherStation.__observations)
 
-station =WeatherStation("Houston")
+station = WeatherStation("Houston")
 station.add_observation("Rain 10mm")
 station.add_observation("Sunny")
 print(station.latest_observation())

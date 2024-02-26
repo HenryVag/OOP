@@ -1,6 +1,10 @@
+#File name: Exercise_4.1.py
+#Author: Henry Våg
+#Description: Exercise 4.1
+
+
+
 from collections import Counter
-
-
 
 class ListHelper:
 

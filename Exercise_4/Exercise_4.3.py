@@ -1,4 +1,9 @@
-# LapTop computer
+#File name: Exercise_4.3.py
+#Author: Henry Våg
+#Description: Exercise 4.3
+
+
+
 class Computer:
     def __init__(self, model: str, speed: int):
         self.__model = model

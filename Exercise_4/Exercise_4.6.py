@@ -40,6 +40,14 @@ class Player:
     def assign_pet(self, mammal):
         self.pet = mammal
 
+    def player_dice_list(self, dice_list):
+        
+        rolled_dice = []
+        for dice in dice_list:
+            dice.roll_dice()
+            rolled_dice.append(dice.show_result[0])
+        return rolled_dice
+
 
 
 
@@ -119,7 +127,7 @@ def play_game(player1, player2):
 
 def main():
     no_of_dice = int(input("Enter number of dice:"))
-    num_players = int(input("Enter number of players"))
+    num_players = int(input("Enter number of players:"))
     
     #player1  = create_dice_list(no_of_dice)
     #player2  = create_dice_list(no_of_dice)
@@ -133,7 +141,7 @@ def main():
     
     for i in range(num_players):
         player_id = i + 1
-        player_name = input(f"Enter player {player_id}'s name")
+        player_name = input(f"Enter player {player_id}'s name:")
         player = Player(player_name, player_id)
 
         players[player_id] = player
@@ -153,11 +161,11 @@ def main():
             print(f"{player}: Dice Rolls - {player.dice.show_result}")
 
     #Prints every player and their pet
-    """        
+           
     for player_id, player in players.items():
             
         print(f"Player: {player.name} {player.pet}")
-    """
+    
     
     
     #play_game(player1, player2)

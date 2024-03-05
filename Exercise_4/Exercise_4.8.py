@@ -61,7 +61,7 @@ class OrderBook:
         
         for task in self.tasks:
             if task.id == id:
-                if not task.finished:
+                if task.finished == False:
                     task.finished = True
                     break
                 else: 
@@ -93,40 +93,93 @@ class OrderBook:
         for task in self.tasks:
             if task.programmer == programmer and task.finished:
                 finished_tasks += 1
-                workload_finished_tasks += task.workload
+                workload_finished_tasks += int(task.workload)
             elif task.programmer == programmer and not task.finished:
                 unfinished_tasks += 1
-                workload_unfinished_tasks += task.workload
+                workload_unfinished_tasks += int(task.workload)
         return finished_tasks, unfinished_tasks, workload_finished_tasks, workload_unfinished_tasks
+    
 
+
+
+class OrderBookApplication:
+    def __init__(self):
+        self.__order_book = OrderBook()
+
+    def run(self):
+        self.commands()
+
+        while True:
+            print("")
+            command = input("command:")
+            if command == "0":
+                break
+            elif command == "1":
+                description = input("description:")
+                programmer = input("programmer:")
+                workload = input("workload:")
+                self.__order_book.add_order(description, programmer, workload)
+                print("added!")
+            elif command == "2":
+                for task in self.__order_book.finished_orders():
+                    print(task)
+            elif command == "3":
+                for task in self.__order_book.unfinished_orders():
+                    print(task)
+        
+            elif command == "4":
+                task_id = input("id:")
+                self.__order_book.mark_finished(int(task_id))
+            elif command == "5":
+                for programmer in self.__order_book.programmers():
+                    print(programmer)
+            elif command == "6":
+                programmer = input("programmer:")
+                status=self.__order_book.status_of_programmer(programmer)
+                print(status)
+        
+            
+
+
+    def commands(self):
+        print("commands:")
+        print("---------------------------")
+        print("0 exit")
+        print("1 add order")
+        print("2 list finished tasks")
+        print("3 list unfinished tasks")
+        print("4 mark task as finished")
+        print("5 programmers")
+        print("6 status of programmer\n")
      
-orders=OrderBook()
-orders.add_order("program webstore","Adele",10)
-orders.add_order("program mobile app for workload accounting","Adele",25)
-orders.add_order("program app for practising mathematics","Adele",100)
-orders.add_order("program the next facebook","Eric",1000)
+def main():
+    
+    orders = OrderBookApplication()
+    orders.run()
 
-orders.mark_finished(1)
-orders.mark_finished(2)
+   
 
-"""
-for order in orders.all_orders():
-    print(order)
+    
+        
 
 
-for task in orders.finished_orders():
-    print(task)
 
 
-for task in orders.unfinished_orders():
-    print(task)
-"""
-status=orders.status_of_programmer("Adele")
-print(status)
 
-"""    
-for programmer in orders.programmers():
-    print(programmer)
-    """
+
+if __name__ == "__main__":
+    main()
+
+
+
+
+
+
+
+
+
+
+
+
 
 

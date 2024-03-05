@@ -40,5 +40,31 @@ print(t3)"""
 class OrderBook:
 
     def __init__(self):
-        self.tasks = {}
+        self.tasks = []
+
+
+    def add_order(self, description, programmer, workload):
+        new_task = Task(description, programmer, workload)
+        self.tasks.append(new_task)
+
+    def all_orders(self):
+            return self.tasks
+    
+    def programmers(self):
+        programmers = []
+        for task in set(self.tasks):
+            programmers.append(task.programmer)
         
+        return list(set(programmers))
+
+        
+orders=OrderBook()
+orders.add_order("program webstore","Adele",10)
+orders.add_order("program mobile app for workload accounting","Eric",25)
+orders.add_order("program app for practising mathematics","Adele",100)
+
+for order in orders.all_orders():
+    print(order)
+
+for programmer in orders.programmers():
+    print(programmer)

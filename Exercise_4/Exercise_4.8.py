@@ -82,21 +82,34 @@ class OrderBook:
         for task in self.tasks:
             if task.finished == False:
                 unfinished_tasks.append(task)
-        return unfinished_tasks        
-    
+        return unfinished_tasks
 
-            
+    def status_of_programmer(self, programmer: str):
+        finished_tasks = 0
+        unfinished_tasks = 0
+        workload_finished_tasks = 0
+        workload_unfinished_tasks = 0
+
+        for task in self.tasks:
+            if task.programmer == programmer and task.finished:
+                finished_tasks += 1
+                workload_finished_tasks += task.workload
+            elif task.programmer == programmer and not task.finished:
+                unfinished_tasks += 1
+                workload_unfinished_tasks += task.workload
+        return finished_tasks, unfinished_tasks, workload_finished_tasks, workload_unfinished_tasks
 
      
 orders=OrderBook()
 orders.add_order("program webstore","Adele",10)
-orders.add_order("program mobile app for workload accounting","Eric",25)
+orders.add_order("program mobile app for workload accounting","Adele",25)
 orders.add_order("program app for practising mathematics","Adele",100)
+orders.add_order("program the next facebook","Eric",1000)
 
 orders.mark_finished(1)
 orders.mark_finished(2)
 
-
+"""
 for order in orders.all_orders():
     print(order)
 
@@ -107,6 +120,9 @@ for task in orders.finished_orders():
 
 for task in orders.unfinished_orders():
     print(task)
+"""
+status=orders.status_of_programmer("Adele")
+print(status)
 
 """    
 for programmer in orders.programmers():

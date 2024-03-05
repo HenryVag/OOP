@@ -56,15 +56,61 @@ class OrderBook:
             programmers.append(task.programmer)
         
         return list(set(programmers))
-
+    
+    def mark_finished(self, id:int):
         
+        for task in self.tasks:
+            if task.id == id:
+                if not task.finished:
+                    task.finished = True
+                    break
+                else: 
+                    print(f"Task {task.id} is already finished")
+                    break
+        else:
+            raise ValueError("Task not found")
+        
+    def finished_orders(self):
+        finished_tasks = []
+        for task in self.tasks:
+            if task.finished == True:
+                finished_tasks.append(task)
+        return finished_tasks
+    
+    def unfinished_orders(self):
+        unfinished_tasks = []
+        for task in self.tasks:
+            if task.finished == False:
+                unfinished_tasks.append(task)
+        return unfinished_tasks        
+    
+
+            
+
+     
 orders=OrderBook()
 orders.add_order("program webstore","Adele",10)
 orders.add_order("program mobile app for workload accounting","Eric",25)
 orders.add_order("program app for practising mathematics","Adele",100)
 
+orders.mark_finished(1)
+orders.mark_finished(2)
+
+
 for order in orders.all_orders():
     print(order)
 
+
+for task in orders.finished_orders():
+    print(task)
+
+
+for task in orders.unfinished_orders():
+    print(task)
+
+"""    
 for programmer in orders.programmers():
     print(programmer)
+    """
+
+

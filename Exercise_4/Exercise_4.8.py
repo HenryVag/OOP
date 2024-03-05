@@ -41,11 +41,16 @@ class OrderBook:
 
     def __init__(self):
         self.tasks = []
-
+        self.accepted_names_list = ["nina", "eric", "jonah", "adele", "henry", "elviira"]
 
     def add_order(self, description, programmer, workload):
-        new_task = Task(description, programmer, workload)
-        self.tasks.append(new_task)
+        
+        if programmer in self.accepted_names_list and workload.isdigit():
+            new_task = Task(description, programmer, workload)
+            self.tasks.append(new_task)
+            return True
+        else:
+            return False
 
     def all_orders(self):
             return self.tasks
@@ -99,6 +104,12 @@ class OrderBook:
                 workload_unfinished_tasks += int(task.workload)
         return finished_tasks, unfinished_tasks, workload_finished_tasks, workload_unfinished_tasks
     
+    def add_accepted_name(self, name):
+        if name not in self.accepted_names_list:
+            self.accepted_names_list.append(name)
+            print("name added")
+        else: 
+            print("name already accepted")
 
 
 
@@ -107,10 +118,11 @@ class OrderBookApplication:
         self.__order_book = OrderBook()
 
     def run(self):
-        self.commands()
+        
 
         while True:
             print("")
+            self.commands()
             command = input("command:")
             if command == "0":
                 break
@@ -118,8 +130,10 @@ class OrderBookApplication:
                 description = input("description:")
                 programmer = input("programmer:")
                 workload = input("workload:")
-                self.__order_book.add_order(description, programmer, workload)
-                print("added!")
+                if self.__order_book.add_order(description, programmer, workload) and len(self.__order_book.tasks) < 50:
+                    print("added!")
+                else:
+                    print("erroneus input")
             elif command == "2":
                 for task in self.__order_book.finished_orders():
                     print(task)
@@ -129,14 +143,29 @@ class OrderBookApplication:
         
             elif command == "4":
                 task_id = input("id:")
-                self.__order_book.mark_finished(int(task_id))
+                if task_id.isdigit() and int(task_id) <= 50:
+                    self.__order_book.mark_finished(int(task_id))
+                    print("marked as finished")
+                else:
+                    print("erroneus input")
             elif command == "5":
-                for programmer in self.__order_book.programmers():
-                    print(programmer)
+                if len(self.__order_book.programmers()) > 0:
+                    for programmer in self.__order_book.programmers():
+                        print(programmer)
+                else:
+                    print("no programmers")
             elif command == "6":
                 programmer = input("programmer:")
                 status=self.__order_book.status_of_programmer(programmer)
                 print(status)
+            elif command == "7":
+                name = input("name:")
+                if name.isalpha():
+                    self.__order_book.add_accepted_name(name)
+                else:
+                    print("erroneous input")
+            else:
+                print("not a command")
         
             
 
@@ -150,21 +179,16 @@ class OrderBookApplication:
         print("3 list unfinished tasks")
         print("4 mark task as finished")
         print("5 programmers")
-        print("6 status of programmer\n")
-     
+        print("6 status of programmer")
+        print("7 add accepted name\n")
+
+    
+    
+
 def main():
     
     orders = OrderBookApplication()
     orders.run()
-
-   
-
-    
-        
-
-
-
-
 
 
 if __name__ == "__main__":

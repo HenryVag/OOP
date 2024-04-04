@@ -12,7 +12,7 @@ class Game:
     
 
     def __str__(self):
-        return f"Name: {self.title}\nGenre: {self.genre}"
+        return f"Name: {self.title}\nGenre: {self.genre}\nType: {self.type}"
 
 
 

@@ -15,7 +15,7 @@ class GameManager:
 
     def list_games(self):
         for game_key, game in self.inv.games.items():
-            print(game.title)
+            print(f"{game.title}, {game.type}")
 
     def add_new_game(self):
         print("-----------")
@@ -26,7 +26,7 @@ class GameManager:
             game = Digitalgame(title, genre)
         if type == "n":
             game = Game(title, genre)
-            
+
         self.inv.add_game(game)
 
 

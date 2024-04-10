@@ -1,6 +1,10 @@
+#File name: game_manager.py
+#Author: Henry Våg
+#Description: Interacts with the modules according to main.py
+
 from inventory import Inventory
 from game import Game, Digitalgame
-
+from validator import *
 
 class GameManager:
     
@@ -11,23 +15,27 @@ class GameManager:
         print("Which game would you like to order?")
         title = input("Title:")
         amount = input("How many copies?:")
-        self.inv.subtract_game(title, amount)
+        type = input("Which type? y = digital / n = disc:")
+        print(self.inv.subtract_game(title, amount, type))
 
     def list_games(self):
-        for game_key, game in self.inv.games.items():
-            print(f"{game.title}, {game.type}")
+        self.inv.list_games()
 
     def add_new_game(self):
         print("-----------")
         title = input("title:")
-        genre = input("genre:")
-        type = input("digital y/n?:")
-        if type == "y":
-            game = Digitalgame(title, genre)
-        if type == "n":
-            game = Game(title, genre)
+        if valid_title(title):
+            genre = input("genre:")
+            if valid_genre(genre):
+                type = input("digital y/n?:")
+                if valid_type(type):
 
-        self.inv.add_game(game)
+                    if type == "y":
+                        game = Digitalgame(title, genre)
+                    if type == "n":
+                        game = Game(title, genre)
+
+                    self.inv.add_game(game)
 
 
 gamemgr = GameManager(Inventory())

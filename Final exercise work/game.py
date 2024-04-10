@@ -1,4 +1,6 @@
-
+#File name: game.py
+#Author: Henry Våg
+#Description: Contains class definitions for a game and its child class
 
 
 class Game:

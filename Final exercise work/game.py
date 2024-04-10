@@ -5,11 +5,11 @@
 
 class Game:
 
-    def __init__(self, title, genre):
+    def __init__(self, title, genre, qty):
         self.title = title
         self.genre = genre
         self.price = 10
-        self.qty = 100
+        self.qty = 1
         self.type = "disc"
     
 
@@ -19,8 +19,8 @@ class Game:
 
 
 class Digitalgame(Game):
-    def __init__(self, title, genre):
-        super().__init__(title, genre)
+    def __init__(self, title, genre, qty):
+        super().__init__(title, genre,qty)
         self.type = "digital"
 
     def __str__(self):

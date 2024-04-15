@@ -27,6 +27,8 @@ class GameManager:
         self.inv.list_games()
 
     def add_new_game(self):
+        """Creates new game object and passes it into the function which adds it to the inventory"""
+
         print("-----------")
         title = input("title:")
         if valid_title(title):

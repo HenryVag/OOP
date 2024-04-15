@@ -20,9 +20,13 @@ class User:
             print("")
             print("you have no games")
             print("")
-        for game in self.owned_games.values():
-            print(f"Name: {game.title}\nGenre: {game.genre}\nType: {game.type} \nQuantity:{game.qty}")
+        else:
             print("")
+            print("Your Games:")
+            print("-----------")
+            for game in self.owned_games.values():
+                print(f"Name: {game.title}\nGenre: {game.genre}\nType: {game.type} \nQuantity:{game.qty}")
+                print("")
     
     def add_game(self, title, genre, qty,  type):
         # Adds game to the users inventory

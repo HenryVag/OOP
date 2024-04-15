@@ -13,7 +13,7 @@ class StatisticsBook:
     
 
     def set_file(self, filename):
-        BASE_PATH = "C:/Users/Henry/Documents/Koulu\Amk/OOP24/" 
+        BASE_PATH = "C:/Users/henry/Documents/Koulupaperit/2/OOP" 
         full_path = os.path.join(BASE_PATH, filename)
         if os.path.exists(full_path):
             self.file = filename

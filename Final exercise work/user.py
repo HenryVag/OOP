@@ -9,14 +9,10 @@ class User:
         self.id = 0
         self.name = name
         self.password = password
-        self.balance = 0
         self.owned_games = {}
         self.logged_in = False
 
-    def add_balance(self, amount):
-        #Adds balance to user's account
-        if valid_amount(amount):
-            self.balance += amount
+    
 
     def list_games(self):
         # Lists games in the users inventory

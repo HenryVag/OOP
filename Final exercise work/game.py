@@ -9,7 +9,7 @@ class Game:
         self.title = title
         self.genre = genre
         self.price = 10
-        self.qty = 1
+        self.qty = qty
         self.type = "disc"
     
 

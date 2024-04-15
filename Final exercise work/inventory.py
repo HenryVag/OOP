@@ -14,9 +14,13 @@ class Inventory:
         }
 
     def list_games(self):
-       for game_key, game in self.games.items():
-            print(f"{game.title}, {game.type} Quantity: {game.qty}")
-
+        print("")
+        print("Available Games")
+        print("---------------")
+        for game_key, game in self.games.items():
+            print(f"{game.title}, Genre: {game.genre} Type: {game.type} Quantity: {game.qty}")
+        print("")
+        print("")
     def subtract_game(self, title, amount, type):
         game_found = False
         if type == "y":
@@ -43,15 +47,15 @@ class Inventory:
             print("game added to inventory")
         else:
             existing_game_key = None
-        for key, existing_game in self.games.items():
-            if existing_game.title == game.title and existing_game.type == game.type:  
-                existing_game_key = key
-                break
-        if existing_game_key is not None:
-            self.games[existing_game_key].qty += game.qty
-            print("Quantity of existing game increased.")
-        else:
-            print("Game not found in inventory.")
+            for key, existing_game in self.games.items():
+                if existing_game.title == game.title and existing_game.type == game.type:  
+                    existing_game_key = key
+                    break
+            if existing_game_key is not None:
+                self.games[existing_game_key].qty += game.qty
+                print("Quantity of existing game increased.")
+            else:
+                print("Game not found in inventory.")
 
     def gen_key(self):
         max_key = max(self.games)

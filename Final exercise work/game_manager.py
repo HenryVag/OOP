@@ -34,11 +34,12 @@ class GameManager:
             if valid_genre(genre):
                 type = input("digital y/n?:")
                 if valid_type(type):
+                    qty = int(input("quantity:"))
 
                     if type == "y":
-                        game = Digitalgame(title, genre)
+                        game = Digitalgame(title, genre, qty)
                     if type == "n":
-                        game = Game(title, genre)
+                        game = Game(title, genre, qty)
 
                     self.inv.add_game(game)
     
@@ -64,10 +65,14 @@ class GameManager:
         for user_key, user in self.users.items():
             if name == user.name and password == user.password:
                 print("logged in")
+                user.logged_in = True
                 self.logged_user = user_key
                 return True
         print("no matching username and password")
         return False
+    
+    def logout(self):
+        self.logged_user = ""
     
     def name_in_use(self, name):
         for user_key, user in self.users.items():

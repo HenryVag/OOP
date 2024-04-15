@@ -1,6 +1,6 @@
 #File name: main.py
 #Author: Henry Våg
-#Description: The main function for a simplified video game store management system
+#Description: The main function for a simplified video game store system
 
 
 from game_manager import gamemgr
@@ -8,28 +8,26 @@ from validator import valid_command
 
 
 def main():
-    logged_in = False
     while True:
         commands()
         command = input("command:")
         if command == "1":
             if gamemgr.login():
-                logged_in = True
+                while True:
+                    user_commands()
+                    user_command = input("command:")
+                    if user_command == "0":
+                        gamemgr.logout()
+                        print("logged out")
+                        break
+                    else:
+                        execute_command(user_command)
             
         if command == "2":
             gamemgr.create_user()
         if command == "0":
             break
-        
-        if logged_in == True:
-            while True:
-                user_commands()
-                user_command = input("command:")
-                if user_command == "0":
-                    print("logged out")
-                    break
-                else:
-                    execute_command(user_command)
+            
 
 def commands():
     print("")

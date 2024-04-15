@@ -10,6 +10,7 @@ class User:
         self.password = password
         self.balance = 0
         self.owned_games = {}
+        self.logged_in = False
 
     def add_balance(self, amount):
         if valid_amount(amount):

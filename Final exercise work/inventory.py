@@ -58,7 +58,10 @@ class Inventory:
                 print("Game not found in inventory.")
 
     def gen_key(self):
-        max_key = max(self.games)
+        if not self.games:
+            max_key = 0
+        else:
+            max_key = max(self.games)
         return max_key + 1
     
     def not_in_inv(self, game):

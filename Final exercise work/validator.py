@@ -24,15 +24,15 @@ def valid_game(title, genre, type):
         print("title too long")
 
 def valid_title(title):
-    if len(title) <= 20:
+    if 1 <= len(title) <= 20:
         return True
     else:
-        print("title too long")
+        print("invalid title")
 
     
 
 def valid_genre(genre):
-    if len(genre) <= 10:
+    if 1 <= len(genre) <= 10:
         return True
     else:
         print("invalid genre")

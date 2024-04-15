@@ -8,12 +8,14 @@ from game import *
 class Inventory:
 
     def __init__(self):
+        #Initializing inventory with predefined games
         self.games = {
             1: Game("The Witcher 3", "RPG", 1),
             2: Digitalgame("Stardew Valley", "Farm RPG", 1),
         }
 
     def list_games(self):
+        #Displays list of available games
         print("")
         print("Available Games")
         print("---------------")
@@ -21,7 +23,10 @@ class Inventory:
             print(f"{game.title}, Genre: {game.genre} Type: {game.type} Quantity: {game.qty}")
         print("")
         print("")
+
+
     def subtract_game(self, title, amount, type):
+        #Subtracts specified quantity of a game from inventory
         game_found = False
         if type == "y":
             type = "digital"
@@ -41,6 +46,7 @@ class Inventory:
         return result
 
     def add_game(self, game):
+        #Adds game to inv or increases qty of existing game
         if self.not_in_inv(game):
             game_key = self.gen_key()
             self.games[game_key] = game
@@ -58,6 +64,7 @@ class Inventory:
                 print("Game not found in inventory.")
 
     def gen_key(self):
+        #Generates key for new game
         if not self.games:
             max_key = 0
         else:
@@ -65,6 +72,7 @@ class Inventory:
         return max_key + 1
     
     def not_in_inv(self, game):
+        #Checks if game already in inv
         for game_key, gam in self.games.items():
             if game.title == gam.title and game.type == gam.type:
                 print("game already in inventory")

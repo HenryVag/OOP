@@ -5,6 +5,7 @@
 
 
 def valid_command(command):
+    #Checks if command is digit and within range
     if command.isdigit() and 0 <= int(command) <= 4:
         return True
     else:
@@ -12,6 +13,7 @@ def valid_command(command):
 
 
 def valid_game(title, genre, type):
+    # Validates game title, genre and type
     if valid_title(title):
         if valid_genre(genre):
             if valid_type(type):
@@ -24,6 +26,7 @@ def valid_game(title, genre, type):
         print("title too long")
 
 def valid_title(title):
+    # Checks if title length is within range
     if 1 <= len(title) <= 20:
         return True
     else:
@@ -32,6 +35,7 @@ def valid_title(title):
     
 
 def valid_genre(genre):
+    # Checks if genre length is within range
     if 1 <= len(genre) <= 10:
         return True
     else:
@@ -39,13 +43,15 @@ def valid_genre(genre):
     
 
 def valid_type(type):
+    # Validates type of game
     if type == "y" or type == "n":
         return True
     else:
         print(f"{type} is not an accepted value")
 
 def valid_amount(amount):
-    if isInt(amount) or isFloat(amount):
+    # Validates quantity added
+    if isInt(amount) or isFloat(amount) and amount < 200:
         return True
     else:
         print("please enter a valid number")

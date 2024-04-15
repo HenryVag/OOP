@@ -8,6 +8,7 @@ from validator import valid_command
 
 
 def main():
+    # Main function to run the program
     while True:
         commands()
         command = input("command:")
@@ -30,6 +31,7 @@ def main():
             
 
 def commands():
+    # Displaying main menu commands
     print("")
     print("login or create user")
     print("--------------------")
@@ -39,6 +41,7 @@ def commands():
     
 
 def user_commands():
+    # Displaying commands for logged in user
     print("commands:")
     print("---------")
     print("0 - log out")
@@ -49,6 +52,7 @@ def user_commands():
     
 
 def execute_command(command):
+    # Executes user commands
     if valid_command(command):
         if command == "1":
             gamemgr.order()
@@ -62,6 +66,6 @@ def execute_command(command):
     
 
 
-
+# Starts main program
 if __name__ == "__main__":
     main()

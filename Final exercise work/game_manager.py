@@ -8,13 +8,14 @@ from validator import *
 from user import User
 
 class GameManager:
-    
+    # Initializing GameManager
     def __init__(self, inv):
         self.inv = inv
         self.users = {}
         self.logged_user = ""
     
     def order(self):
+        # Prompting user to order a game and updating inventory accordingly
         print("Which game would you like to order?")
         title = input("Title:")
         genre = input("Genre:")
@@ -24,10 +25,11 @@ class GameManager:
         print(self.inv.subtract_game(title, qty, type))
 
     def list_games(self):
+        # Listing all available games in the inventory
         self.inv.list_games()
 
     def add_new_game(self):
-        """Creates new game object and passes it into the function which adds it to the inventory"""
+        # Creates new game object and passes it into the function which adds it to the inventory
 
         print("-----------")
         title = input("title:")
@@ -46,6 +48,7 @@ class GameManager:
                     self.inv.add_game(game)
     
     def create_user(self):
+        # Creating a new user account
         name = input("enter name:")
         if not self.name_in_use(name):
             password = input("enter password")         
@@ -62,6 +65,7 @@ class GameManager:
             return False
     
     def login(self):
+        # Logging in existing user
         name = input("enter name:")
         password = input("enter password:")
         for user_key, user in self.users.items():
@@ -74,15 +78,18 @@ class GameManager:
         return False
     
     def logout(self):
+        # Logs out current user
         self.logged_user = ""
     
     def name_in_use(self, name):
+        # Checks if username already in use
         for user_key, user in self.users.items():
             if name == user.name:
                 return True
         return False
     
     def user_list_games(self):
+        # Lists games owned by logged-in user
         user = self.users[self.logged_user]
         user.list_games()
             

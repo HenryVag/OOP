@@ -64,13 +64,6 @@ class Mammal:
         return f"Pet: {self.name}, Species: {self.species}"
 
 
-
-
-
-
-
-
-
 def roll_dice_list(dice_list):
     rolled_dice = []
     for dice in dice_list:

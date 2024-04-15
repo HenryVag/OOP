@@ -43,7 +43,7 @@ def user_commands():
     print("---------")
     print("0 - log out")
     print("1 - order")
-    print("2 - list available games")
+    print("2 - list games")
     print("3 - add new game")
     print("4- list your games")
     

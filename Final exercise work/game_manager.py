@@ -46,7 +46,7 @@ class GameManager:
     def create_user(self):
         name = input("enter name:")
         if not self.name_in_use(name):
-            password = input("enter password")         
+            password = input("enter password:")         
             new_user = User(name, password) 
             if not self.users:
                 new_key = 1

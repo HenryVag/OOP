@@ -21,9 +21,13 @@ class User:
             print("")
             print("you have no games")
             print("")
-        for game in self.owned_games.values():
-            print(f"Name: {game.title}\nGenre: {game.genre}\nType: {game.type} \nQuantity:{game.qty}")
+        else:
             print("")
+            print("Your Games:")
+            print("-----------")
+            for game in self.owned_games.values():
+                print(f"Name: {game.title}\nGenre: {game.genre}\nType: {game.type} \nQuantity:{game.qty}")
+                print("")
     
     def add_game(self, title, genre, qty,  type):
         game = Digitalgame(title, genre, qty) if type == "y" else Game(title, genre, qty)
